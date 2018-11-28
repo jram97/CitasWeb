@@ -8,7 +8,6 @@ import com.jram.Entity.Persona;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -18,7 +17,7 @@ public class DoctorDaoImple {
     private final String FINDALLDOCTOR = "SELECT * FROM DOCTORES INNER JOIN PERSONAS ON PERSONAS.ID_PERSONA = DOCTORES.ID_PERSONA INNER JOIN CONSULTORIOS ON CONSULTORIOS.ID_CONSULTORIO = DOCTORES.ID_CONSULTORIO INNER JOIN ESPECIALIDADES ON ESPECIALIDADES.ID_ESPECIALIDAD = DOCTORES.ID_ESPECIALIDAD ORDER BY DOCTORES.ID_DOCTOR ASC;";
     private final String FINDALLDOCTORBYID = "SELECT * FROM DOCTORES LEFT JOIN PERSONAS ON PERSONAS.ID_PERSONA = DOCTORES.ID_PERSONA LEFT JOIN CONSULTORIOS ON CONSULTORIOS.ID_CONSULTORIO = DOCTORES.ID_CONSULTORIO LEFT JOIN ESPECIALIDADES ON ESPECIALIDADES.ID_ESPECIALIDAD = DOCTORES.ID_ESPECIALIDAD WHERE ID_DOCTOR = ?;";
    
-    private final String SAVE = "{CALL INSERT_PERSONS(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+    private final String SAVE = "{CALL INSERT_PERSONS(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
 
     public DoctorDaoImple(Connect con) {
         this.con = con;
@@ -35,7 +34,7 @@ public class DoctorDaoImple {
             while(rs.next()){
                 Doctor d = new Doctor();
                 
-                Persona p = new Persona(rs.getInt("ID_PERSONA"), rs.getString("NOMBRE_PERS"), rs.getString("APELLIDO_PERS"), rs.getInt("EDAD_PERS"), rs.getString("FOTO_PERS"), rs.getInt("TELEFONO_PERS"), rs.getString("EMAIL_PERS"));
+                Persona p = new Persona(rs.getInt("ID_PERSONA"), rs.getString("NOMBRE_PERS"), rs.getString("APELLIDO_PERS"), rs.getInt("EDAD_PERS"), rs.getInt("TELEFONO_PERS"), rs.getString("EMAIL_PERS"));
                 Especialidad e = new Especialidad(rs.getInt("ID_ESPECIALIDAD"), rs.getString("NOMBRE_ESP"));
                 Consultorio c = new Consultorio(rs.getInt("ID_CONSULTORIO"), rs.getString("DIR_CONS"), rs.getInt("TEL_CONS"));
                 
@@ -77,7 +76,7 @@ public class DoctorDaoImple {
             while(rs.next()){
                 Doctor d = new Doctor();
 
-                Persona p = new Persona(rs.getInt("ID_PERSONA"), rs.getString("NOMBRE_PERS"), rs.getString("APELLIDO_PERS"), rs.getInt("EDAD_PERS"), rs.getString("FOTO_PERS"), rs.getInt("TELEFONO_PERS"), rs.getString("EMAIL_PERS"));
+                Persona p = new Persona(rs.getInt("ID_PERSONA"), rs.getString("NOMBRE_PERS"), rs.getString("APELLIDO_PERS"), rs.getInt("EDAD_PERS"), rs.getInt("TELEFONO_PERS"), rs.getString("EMAIL_PERS"));
                 Especialidad e = new Especialidad(rs.getInt("ID_ESPECIALIDAD"), rs.getString("NOMBRE_ESP"));
                 Consultorio c = new Consultorio(rs.getInt("ID_CONSULTORIO"), rs.getString("DIR_CONS"), rs.getInt("TEL_CONS"));
                 
@@ -113,15 +112,14 @@ public class DoctorDaoImple {
             ps.setString(2, p.getNombre());
             ps.setString(3, p.getApellido());
             ps.setInt(4, p.getEdad());
-            ps.setString(5, p.getFoto());
-            ps.setInt(6, p.getTelefono());
-            ps.setString(7, p.getEmail());
-            ps.setString(8, p.getPass());
-            ps.setInt(9, es.getCodigoEsp());
-            ps.setInt(10, c.getCodigoCons());
-            ps.setInt(11, d.getTiempoMedico());
-            ps.setString(12, d.getEstudio());
-            ps.setString(13, d.getLocation());
+            ps.setInt(5, p.getTelefono());
+            ps.setString(6, p.getEmail());
+            ps.setString(7, p.getPass());
+            ps.setInt(8, es.getCodigoEsp());
+            ps.setInt(9, c.getCodigoCons());
+            ps.setInt(10, d.getTiempoMedico());
+            ps.setString(11, d.getEstudio());
+            ps.setString(12, d.getLocation());
             
             ps.executeUpdate();
             

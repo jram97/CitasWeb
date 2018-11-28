@@ -4,7 +4,15 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        
+        <meta http-equiv="Expires" content="0">
+
+        <meta http-equiv="Last-Modified" content="0">
+
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+
+        <meta http-equiv="Pragma" content="no-cache">
+
+
         <title>Citas Web</title>
 
         <!-- Font Awesome Icons -->
@@ -13,7 +21,8 @@
         <link rel="stylesheet" href="dist/css/adminlte.min.css">
         <!-- Google Font: Source Sans Pro -->
         <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-        
+
+
     </head>
     <body class="hold-transition sidebar-mini">
 
@@ -29,7 +38,7 @@
                         <a href="home" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item d-none d-sm-inline-block">
-                        <a href="register.jsp" class="nav-link">Login</a>
+                        <a href="login?param=logout" class="nav-link">Salir</a>
                     </li>
                 </ul>
 
@@ -60,16 +69,8 @@
                 <!-- Sidebar -->
                 <div class="sidebar">
                     <!-- Sidebar user panel (optional) -->
-                    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-                        <div class="image">
-                            <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-                        </div>
-                        <div class="info">
-                            <a href="#" class="d-block">Javier Ramírez</a>
-                        </div>
-                    </div>
 
-                    <!-- Sidebar Menu -->
+
                     <nav class="mt-2">
                         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
@@ -81,12 +82,19 @@
                             </li>
 
                             <li class="nav-item">
-                                <a href="view?param=doct" class="nav-link">
+                                <a href="login" class="nav-link">
                                     <i class="nav-icon fa fa-th"></i>
-                                    <p>Ver Doctor</p>
+                                    <p>Login</p>
                                 </a>
                             </li>
-                            
+
+                            <li class="nav-item">
+                                <a href="view?param=doct" class="nav-link">
+                                    <i class="nav-icon fa fa-th"></i>
+                                    <p>Ver Doctores</p>
+                                </a>
+                            </li>
+
                             <li class="nav-item">
                                 <a href="#" class="nav-link">
                                     <i class="nav-icon fa fa-th"></i>
@@ -114,7 +122,7 @@
                                     <p>Especialidad nuevo</p>
                                 </a>
                             </li>
-                            
+
                             <li class="nav-item">
                                 <a href="view?param=espe" class="nav-link">
                                     <i class="nav-icon fa fa-th"></i>
@@ -151,17 +159,4 @@
                 <!-- /.sidebar -->
             </aside>
 
-            <!-- Content Wrapper. Contains page content -->
-            <div class="content-wrapper">
-                <!-- Content Header (Page header) -->
-                <div class="content-header">
-                    <div class="container-fluid">
-                        <div class="row mb-2">
-                            <div class="col-sm-6">
-                                <h1 class="m-0 text-dark">CitasWeb</h1>
-                            </div><!-- /.col -->
-                        </div><!-- /.row -->
-                    </div><!-- /.container-fluid -->
-                </div>
-                <!-- /.content-header -->
-
+            <jsp:include page="../session/session.jsp"></jsp:include>

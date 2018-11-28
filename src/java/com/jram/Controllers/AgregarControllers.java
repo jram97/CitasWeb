@@ -25,6 +25,7 @@ public class AgregarControllers extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
         String param = request.getParameter("param");
         
         if (!param.isEmpty()) {
@@ -136,7 +137,6 @@ public class AgregarControllers extends HttpServlet {
         p.setNombre(nombre);
         p.setApellido(apellido);
         p.setEdad(edad);
-        p.setFoto("doctor.jpg");
         p.setTelefono(telefono);
         p.setEmail(email);
         p.setPass(pass);

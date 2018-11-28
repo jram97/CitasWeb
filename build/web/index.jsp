@@ -21,9 +21,9 @@
                     <c:forEach items="${doctores}" var="doc">
                         
                         <li>
-                            <img src="images/${doc.persona.foto}" width="128px" height="128px">
                             <a class="users-list-name" href="home?doc=${doc.codigoDoctor}">${doc.persona.nombre} ${doc.persona.apellido}</a>
                             <span class="users-list-date">${doc.persona.email}</span>
+                            <span class="users-list-date">${doc.especialidad.nombreEsp}</span>
                         </li> 
 
                     </c:forEach>  

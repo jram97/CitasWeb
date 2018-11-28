@@ -23,6 +23,7 @@ public class DoctoresControllers extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        
         if (request.getParameter("doc") == null) {
             DoctorDaoImple ddi = new DoctorDaoImple(con);
             List<Doctor> findall = ddi.findAll();
@@ -50,7 +51,7 @@ public class DoctoresControllers extends HttpServlet {
 
         request.setAttribute("findall", findall);
         RequestDispatcher rd = request.getRequestDispatcher("details.jsp");
-        rd.forward(request, response);
+        rd.include(request, response);
     }
 
     @Override

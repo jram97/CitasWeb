@@ -8,7 +8,12 @@ import java.util.List;
 import com.jram.Dao.Connect;
 import com.jram.Dao.CrudDao;
 import com.jram.Entity.Persona;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class PersonaDaoImple implements CrudDao<Persona> {
 
@@ -17,7 +22,7 @@ public class PersonaDaoImple implements CrudDao<Persona> {
     private final String SELECTWHERE = "SELECT * FROM PERSONAS INNER JOIN ROLES ON ROLES.ID_ROL = PERSONAS.ID_ROL WHERE ID_PERSONA = ?;";
 
     private final String SAVE = "{CALL INSERT_PERSONS(?, ?, ?, ?, ?, ?, ?, ?, ?)}";
-    private final String UPDATE = "UPDATE PERSONAS SET NOMBRE_PERS = ?, APELLIDO_PERS = ?, EDAD_PERS = ?, FOTO_PERS = ?, TELEFONO_PERS = ? WHERE ID_PERSONA = ?;";
+    private final String UPDATE = "UPDATE PERSONAS SET NOMBRE_PERS = ?, APELLIDO_PERS = ?, EDAD_PERS = ?, TELEFONO_PERS = ? WHERE ID_PERSONA = ?;";
     private final String DELETE = "DELETE FROM PERSONAS WHERE ID_PERSONA = ?;";
     
     public PersonaDaoImple(Connect con) {
@@ -41,7 +46,6 @@ public class PersonaDaoImple implements CrudDao<Persona> {
                 p.setNombre(rs.getString("NOMBRE_PERS"));
                 p.setApellido(rs.getString("APELLIDO_PERS"));
                 p.setEdad(rs.getInt("EDAD_PERS"));
-                p.setFoto(rs.getString("FOTO_PERS"));
                 p.setTelefono(rs.getInt("TELEFONO_PERS"));
                 p.setEmail(rs.getString("EMAIL_PERS"));
                 p.setPass(rs.getString("PASS_PERS"));
@@ -75,7 +79,6 @@ public class PersonaDaoImple implements CrudDao<Persona> {
                 p.setNombre(rs.getString("NOMBRE_PERS"));
                 p.setApellido(rs.getString("APELLIDO_PERS"));
                 p.setEdad(rs.getInt("EDAD_PERS"));
-                p.setFoto(rs.getString("FOTO_PERS"));
                 p.setTelefono(rs.getInt("TELEFONO_PERS"));
                 p.setEmail(rs.getString("EMAIL_PERS"));
                 p.setPass(rs.getString("PASS_PERS"));
@@ -93,19 +96,17 @@ public class PersonaDaoImple implements CrudDao<Persona> {
 
     @Override
     public boolean Save(Persona t) {
-
+                      
         try {
-
             PreparedStatement ps = con.Start().prepareCall(SAVE);
             ps.setInt(1, t.getCodigo());
             ps.setString(2, t.getNombre());
             ps.setString(3, t.getApellido());
             ps.setInt(4, t.getEdad());
-            ps.setString(5, t.getFoto());
-            ps.setInt(6, t.getTelefono());
-            ps.setString(7, t.getEmail());
-            ps.setString(8, t.getPass());
-            ps.setInt(9, t.getCodigoRole());
+            ps.setInt(5, t.getTelefono());
+            ps.setString(6, t.getEmail());
+            ps.setString(7, t.getPass());
+            ps.setInt(8, t.getCodigoRole());
 
             ps.executeUpdate();
 
@@ -114,7 +115,7 @@ public class PersonaDaoImple implements CrudDao<Persona> {
         } catch (SQLException e) {
             return false;
         }
-
+        
     }
 
     @Override
@@ -125,8 +126,7 @@ public class PersonaDaoImple implements CrudDao<Persona> {
             ps.setString(1, t.getNombre());
             ps.setString(2, t.getApellido());
             ps.setInt(3, t.getEdad());
-            ps.setString(4, t.getFoto());
-            ps.setInt(5, t.getTelefono());
+            ps.setInt(4, t.getTelefono());
             
             ps.executeUpdate();
             

@@ -9,7 +9,6 @@ public class Persona {
     private String nombre;
     private String apellido;
     private int edad;
-    private String foto;
     private int telefono;
     private String email;
     private String pass;
@@ -25,12 +24,11 @@ public class Persona {
         this.codigo = codigo;
     }
 
-    public Persona(int codigo, String nombre, String apellido, int edad, String foto, int telefono, String email) {
+    public Persona(int codigo, String nombre, String apellido, int edad, int telefono, String email) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.apellido = apellido;
         this.edad = edad;
-        this.foto = foto;
         this.telefono = telefono;
         this.email = email;
     }
@@ -65,14 +63,6 @@ public class Persona {
 
     public void setEdad(int edad) {
         this.edad = edad;
-    }
-
-    public String getFoto() {
-        return foto;
-    }
-
-    public void setFoto(String foto) {
-        this.foto = foto;
     }
 
     public int getTelefono() {
@@ -125,7 +115,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return "Persona{" + "codigo=" + codigo + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", foto=" + foto + ", telefono=" + telefono + ", email=" + email + ", pass=" + pass + ", fechaInicio=" + fechaInicio + ", codigoRole=" + codigoRole + '}';
+        return "Persona{" + "codigo=" + codigo + ", nombre=" + nombre + ", apellido=" + apellido + ", edad=" + edad + ", telefono=" + telefono + ", email=" + email + ", pass=" + pass + ", fechaInicio=" + fechaInicio + ", codigoRole=" + codigoRole + '}';
     }
         
 }
