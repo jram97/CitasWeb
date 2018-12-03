@@ -19,7 +19,7 @@
             <c:forEach items="${especialidad}" var="e">
                 <tr>
                     <td><a href="view?param=updespe&codigo=${e.codigoEsp}"><i class="nav-icon fa fa-pencil-square-o"></i> </a> - 
-                        <a href="${e.codigoEsp}"><i class="nav-icon fa fa-trash-o"></i> </a></td>
+                        <a href="delete?param=delete_espe&codigo=${e.codigoEsp}"><i class="nav-icon fa fa-trash-o"></i> </a></td>
                     <td>${e.codigoEsp}</td>
                     <td>${e.nombreEsp}</td>
                 </tr>

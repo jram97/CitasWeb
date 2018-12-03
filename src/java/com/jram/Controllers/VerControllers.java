@@ -4,10 +4,12 @@ import com.jram.Dao.Connect;
 import com.jram.DaoImple.ConsultorioDaoImple;
 import com.jram.DaoImple.DoctorDaoImple;
 import com.jram.DaoImple.EspecialidadDaoImple;
+import com.jram.DaoImple.HorarioDaoImple;
 import com.jram.DaoImple.RoleDaoImple;
 import com.jram.Entity.Consultorio;
 import com.jram.Entity.Doctor;
 import com.jram.Entity.Especialidad;
+import com.jram.Entity.Horario;
 import com.jram.Entity.Role;
 import java.io.IOException;
 import java.util.List;
@@ -44,6 +46,9 @@ public class VerControllers extends HttpServlet {
                     break;
                 case "doct":
                     viewDoct(request, response);
+                    break;
+                case "horario":
+                    viewHorario(request, response);
                     break;    
                 case "updespe":
                     int co = Integer.parseInt(request.getParameter("codigo"));
@@ -69,6 +74,17 @@ public class VerControllers extends HttpServlet {
         
         request.setAttribute("consultorios", findall);
         RequestDispatcher rd = request.getRequestDispatcher("cons-lista.jsp");
+        rd.include(request, response);
+    }
+    
+    protected void viewHorario(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        
+        HorarioDaoImple hdi = new HorarioDaoImple(con);
+        List<Horario> findall = hdi.getAll();
+        
+        request.setAttribute("horarios", findall);
+        RequestDispatcher rd = request.getRequestDispatcher("horario-lista.jsp");
         rd.include(request, response);
     }
     

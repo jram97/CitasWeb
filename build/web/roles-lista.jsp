@@ -20,7 +20,7 @@
             <c:forEach items="${roles}" var="r">
                 <tr>
                     <td><a href="view?param=updrole&codigo=${r.codigoRol}"><i class="nav-icon fa fa-pencil-square-o"></i> </a> - 
-                        <a href="${r.codigoRol}"><i class="nav-icon fa fa-trash-o"></i> </a></td>
+                        <a href="delete?param=delete_role&codigo=${r.codigoRol}"><i class="nav-icon fa fa-trash-o"></i> </a></td>
                     <td>${r.codigoRol}</td>
                     <td>${r.nombreRol}</td>
                     <td>${r.descRol}</td>

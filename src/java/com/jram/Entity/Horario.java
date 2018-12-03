@@ -1,7 +1,6 @@
 package com.jram.Entity;
 
 import java.sql.Timestamp;
-import java.util.List;
 
 public class Horario {
     

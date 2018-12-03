@@ -117,7 +117,15 @@ public class RoleDaoImple implements CrudDao<Role>{
 
     @Override
     public boolean Delete(int t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            PreparedStatement p = con.Start().prepareStatement(DELETE);
+            p.setInt(1, t);
+            
+            p.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
     }
 
     @Override

@@ -62,12 +62,20 @@ public class LoginController extends HttpServlet {
 
         Connect con = new Connect();
         LoginDaoImple ldi = new LoginDaoImple(con);
-        List<Login> getLogin = ldi.Login(email, pass);
 
-        session = request.getSession(true);
-        session.setAttribute("login", getLogin);
-        RequestDispatcher rd = request.getRequestDispatcher("session/sesion.jsp");
-        response.sendRedirect("home");
+        if (ldi.Login(email, pass) == null) {
+            response.sendRedirect("login");
+            
+        } else {
+            
+            List<Login> getLogin = ldi.Login(email, pass);
+            session = request.getSession(true);
+            session.setAttribute("login", email);
+            //session.setAttribute("rol", login.getRolCode());
+            //RequestDispatcher rd = request.getRequestDispatcher("session/sesion.jsp");
+            response.sendRedirect("home");
+        }
+
     }
 
     protected void Logout(HttpServletRequest request, HttpServletResponse response)

@@ -27,10 +27,6 @@ public class DoctoresControllers extends HttpServlet {
         if (request.getParameter("doc") == null) {
             DoctorDaoImple ddi = new DoctorDaoImple(con);
             List<Doctor> findall = ddi.findAll();
-            
-            for (Doctor doctor : findall) {
-                System.out.println(doctor.getCodigoDoctor());
-            }
            
             request.setAttribute("doctores", findall);
             RequestDispatcher rd = request.getRequestDispatcher("index.jsp");

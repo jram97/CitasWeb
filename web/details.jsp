@@ -19,7 +19,7 @@
 
                                 <p class="text-muted text-center">${doc.especialidad.nombreEsp}</p>
 
-                                <a href="create.jsp?doc=${doc.codigoDoctor}&user=${doc.persona.codigo}" class="btn btn-outline-primary btn-block"><b>Hacer Cita</b></a>
+                                <a href="add?param=cita&codigomedico=${doc.persona.codigo}&codigopersona=<%=session.getAttribute("login")%>" class="btn btn-outline-primary btn-block"><b>Hacer Cita</b></a>
                             </div>
                             <!-- /.card-body -->
                         </div>

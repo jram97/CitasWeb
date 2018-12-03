@@ -4,6 +4,7 @@ import com.jram.Dao.Connect;
 import com.jram.Entity.Login;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -25,17 +26,22 @@ public class LoginDaoImple {
 
             List<Login> getLogin = new LinkedList<>();
 
-            while (rs.next()) {
-                Login login = new Login();
+            if (rs.next()) {
+                while (rs.next()) {
+                    Login login = new Login();
 
-                login.setEmail(rs.getString("EMAIL_LOGIN"));
-                login.setPass(rs.getString("PASS_LOGIN"));
-                login.setRolCode(rs.getInt("ID_ROL"));
-                login.setEstado(rs.getString("ESTADO"));
-                getLogin.add(login);
+                    login.setEmail(rs.getString("EMAIL_LOGIN"));
+                    login.setPass(rs.getString("PASS_LOGIN"));
+                    login.setRolCode(rs.getInt("ID_ROL"));
+                    login.setEstado(rs.getString("ESTADO"));
+                    getLogin.add(login);
+                }
+                return getLogin;
+            } else {
+                return null;
             }
-            return getLogin;
-        } catch (Exception e) {
+
+        } catch (SQLException e) {
             return null;
         }
     }

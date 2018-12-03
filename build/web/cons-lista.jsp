@@ -21,7 +21,7 @@
             <c:forEach items="${consultorios}" var="c">
                 <tr>
                     <td><a href="view?param=updcons&codigo=${c.codigoCons}"><i class="nav-icon fa fa-pencil-square-o"></i> </a> - 
-                        <a href="${c.codigoCons}"><i class="nav-icon fa fa-trash-o"></i> </a></td>
+                        <a href="delete?param=delete_cons&codigo=${c.codigoCons}"><i class="nav-icon fa fa-trash-o"></i> </a></td>
                     <td>${c.codigoCons}</td>
                     <td>${c.nombreCons}</td>
                     <td>${c.direccionCons}</td>

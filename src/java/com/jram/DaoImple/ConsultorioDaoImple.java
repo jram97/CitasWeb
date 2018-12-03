@@ -15,7 +15,7 @@ public class ConsultorioDaoImple implements CrudDao<Consultorio> {
     private final String SAVE = "INSERT INTO CONSULTORIOS VALUES (?, ?, ?, ?);";
     private final String UPDATE = "UPDATE CONSULTORIOS SET NOM_CONS = ?, DIR_CONS = ?, TEL_CONS = ? WHERE ID_CONSULTORIO = ?;";
     private final String CONSULTORIOID = "SELECT * FROM CONSULTORIOS WHERE ID_CONSULTORIO = ?;";
-
+    private final String DELETE = "DELETE FROM CONSULTORIOS WHERE ID_CONSULTORIO = ?;";
     public ConsultorioDaoImple(Connect con) {
         this.con = con;
     }
@@ -105,7 +105,17 @@ public class ConsultorioDaoImple implements CrudDao<Consultorio> {
 
     @Override
     public boolean Delete(int t) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+        try {
+            PreparedStatement p = con.Start().prepareStatement(DELETE);
+            p.setInt(1, t);
+            
+            p.executeUpdate();
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+        
     }
 
     @Override
